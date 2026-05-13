@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <title>Interactive comments section</title>
+  <link rel="stylesheet" href="./index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="opening">
+  <div id="start" class="inter start">
+    <h1>Hey! Welcome to my Interactive Comment Section</h1>
+    <p class="note">Hi there! This is a simple interactive comment space where you can join conversations, share your
+      ideas, and
+      reply to others. Just enter your name to get started, and you’ll be able to post comments, interact with replies,
+      and see everything update instantly. Feel free to explore and have fun engaging!
+    </p>
+    <div id="inputs">
+      <input id="imageInput" type="file" accept="image/*">
+      <input id="nameInput" type="text" class="inter" placeholder="Mr Lagbaja">
+    </div>
+    <p>Enter your name and image to begin interacting</p>
+    <button id="button">Start Commenting</button>
+  </div>
+
+  <div id="main" class="Rubix">
+    <div class="maine">
+      <div class="votes">
+        <img class="plus" src="./images/icon-plus.svg" alt="">
+        <div class="display">9</div>
+        <img class="minus" src="./images//icon-minus.svg" alt="">
+      </div>
+      <div>
+        <div class="picture">
+          <img src="./images/avatars/image-amyrobson.webp" alt="">
+          <p class="name">Amara</p>
+          <p class="ara">1 month ago</p>
+          <div id="reply1">
+            <img src="./images/icon-reply.svg" style="width: 100%" alt="">
+            <p>Reply</p>
+          </div>
+        </div>
+        <p class="ara">I just went to the filling station and saw the new price on the pump. My heart skip beat! 😭 At
+          this rate, we go soon start to use bicycle for Lagos-Ibadan expressway. Who else is currently eating breakfast
+          from the economy?</p>
+      </div>
+    </div>
+
+    <div class="maine" id="replies1">
+      <img id="replyImage1" src="">
+      <textarea id="replyInput" type="text"></textarea>
+      <button id="actualReplies">Reply</button>
+    </div>
+
+    <div class="maine" id="relay1">
+      <div class="votes">
+        <img class="replyPlus1" src="./images/icon-plus.svg" alt="">
+        <div class="replyDisplay1">0</div>
+        <img class="replyMinus1" src="./images/icon-minus.svg" alt="">
+      </div>
+      <div class="together">
+        <div class="picture">
+          <img id="replyImage1" src="">
+          <p id="replyName"></p>
+          <div class="you">you</div>
+          <p class="ara">1 month ago</p>
+          <div class="edit">
+            <img src="./images/icon-edit.svg" alt="">
+            <button id="editBtn">Edit</button>
+          </div>
+          <div class="delete">
+            <img src="./images/icon-delete.svg" alt="">
+            <button id="deleteBtn">Delete</button>
+          </div>
+        </div>
+        <p id="replyContent"></p>
+      </div>
+    </div>
+
+    <div class="maine">
+      <div class="votes">
+        <img class="plus" src="./images/icon-plus.svg" alt="">
+        <div class="display">4</div>
+        <img class="minus" src="./images//icon-minus.svg" alt="">
+      </div>
+
+      <div>
+        <div class="picture">
+          <img src="./images/avatars/image-maxblagun.webp" alt="">
+          <p class="name">Umar</p>
+          <p class="ara">2 weeks ago</p>
+
+          <div id="reply2">
+            <img src="./images/icon-reply.svg" style="width: 100%" alt="">
+            <p>Reply</p>
+          </div>
+        </div>
+
+        <p class="ara">
+          No be lie, my brother! I carry my small Corolla go fill tank yesterday, the total amount reach what I use buy
+          the car 5 years ago. 😭 Small time, we go start to trek from Ikeja go CMS. My shoes don already dey complain.
+          It is well for this country, we go survive regardless!
+        </p>
+      </div>
+    </div>
+
+    <div class="maine" id="replies2">
+      <img id="replyImage2" src="">
+      <textarea id="replyInput2"></textarea>
+      <button id="actualReplies2">Reply</button>
+    </div>
+
+    <div class="maine" id="relay2">
+      <div class="votes">
+        <img class="replyPlus2" src="./images/icon-plus.svg" alt="">
+        <div class="replyDisplay2">0</div>
+        <img class="replyMinus2" src="./images/icon-minus.svg" alt="">
+      </div>
+
+      <div class="together">
+        <div class="picture">
+
+          <img id="replyImag2" src="">
+
+          <p id="replyName2"></p>
+
+          <div class="you">you</div>
+
+          <p class="ara">1 month ago</p>
+
+          <div class="edit">
+            <img src="./images/icon-edit.svg" alt="">
+            <button id="editBtn2">Edit</button>
+          </div>
+
+          <div class="delete">
+            <img src="./images/icon-delete.svg" alt="">
+            <button id="deleteBtn2">Delete</button>
+          </div>
+
+        </div>
+
+        <p id="replyContent2"></p>
+
+      </div>
+    </div>
+
+    <div class="maine">
+      <div class="votes">
+        <img class="plus" src="./images/icon-plus.svg" alt="">
+        <div class="display">6</div>
+        <img class="minus" src="./images//icon-minus.svg" alt="">
+      </div>
+
+      <div>
+        <div class="picture">
+          <img src="./images/avatars/image-ramsesmiron.webp" alt="">
+          <p class="name">Kunle</p>
+          <p class="ara">1 week ago</p>
+
+          <div id="reply3">
+            <img src="./images/icon-reply.svg" style="width: 100%" alt="">
+            <p>Reply</p>
+          </div>
+        </div>
+
+        <p class="ara">
+          Trek? Abeg no stress me. I’ve already started looking for where to buy a well-trained donkey. No fuel, no
+          insurance, no VIO trouble—just grass and water! 🐴 Since the economy don decide to show us shege, we have to
+          show the economy 'No Gree For Anybody.' We move!
+        </p>
+      </div>
+    </div>
+
+    <div class="maine" id="replies3">
+      <img id="replyImage3" src="">
+      <textarea id="replyInput3"></textarea>
+      <button id="actualReplies3">Reply</button>
+    </div>
+
+    <div class="maine" id="relay3">
+      <div class="votes">
+        <img class="replyPlus3" src="./images/icon-plus.svg" alt="">
+        <div class="replyDisplay3">0</div>
+        <img class="replyMinus3" src="./images/icon-minus.svg" alt="">
+      </div>
+      <div class="together">
+        <div class="picture">
+
+          <img id="replyImag3" src="">
+
+          <p id="replyName3"></p>
+
+          <div class="you">you</div>
+
+          <p class="ara">1 month ago</p>
+
+          <div class="edit">
+            <img src="./images/icon-edit.svg" alt="">
+            <button id="editBtn3">Edit</button>
+          </div>
+
+          <div class="delete">
+            <img src="./images/icon-delete.svg" alt="">
+            <button id="deleteBtn3">Delete</button>
+          </div>
+
+        </div>
+
+        <p id="replyContent3"></p>
+
+      </div>
+    </div>
+
+    <div class="maine" id="mainInputContainer">
+      <img id="mainInputImage" src=""> <textarea id="mainTextarea" placeholder="Add a comment..."></textarea>
+      <button id="mainSendBtn">SEND</button>
+    </div>
+
+    <div class="maine" id="mainRelayContainer" style="display: none;">
+      <div class="votes">
+        <img class="plus" src="./images/icon-plus.svg" alt="">
+        <div class="display">0</div>
+        <img class="minus" src="./images/icon-minus.svg" alt="">
+      </div>
+      <div class="together">
+        <div class="picture">
+          <img id="mainRelayImage" src="">
+          <p id="mainRelayUsername"></p>
+          <div class="you">you</div>
+          <p class="ara">Just now</p>
+          <div class="edit">
+            <img src="./images/icon-edit.svg" alt="">
+            <button id="mainEditBtn">Edit</button>
+          </div>
+          <div class="delete">
+            <img src="./images/icon-delete.svg" alt="">
+            <button id="mainDeleteBtn">Delete</button>
+          </div>
+        </div>
+        <p id="mainRelayText"></p>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+
+
+</body>
+<script src="index.js"></script>
+
+</html>

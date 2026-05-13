@@ -1,0 +1,416 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.opening {
+  background-image: url("./images/bg cover.avif");
+  background-size: cover;
+
+  min-height: 100vh;
+  width: 100%;
+
+  /* This centers the .start box both vertically and horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow-y: auto;
+}
+
+.start {
+  font-family: "Inter", sans-serif;
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.85);
+  /* Increased opacity for better readability */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  padding: 30px;
+  border-radius: 16px;
+
+  /* Thinner width and ensures it doesn't touch the edges */
+  width: 85%;
+  max-width: 350px;
+  /* Reduced from 500px to make it thinner */
+
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+
+  /* Adds a little breathing room from the top/bottom on short screens */
+  margin: 20px;
+}
+
+
+.start h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.start p {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+#inputs {
+  width: 100%;
+  display: flex;
+  /* This is the magic line: it stacks the image and name input vertically */
+  flex-direction: column;
+  gap: 12px;
+  /* Adds space between the file picker and the text box */
+  margin: 15px 0;
+  /* Important: ensures the padding doesn't push the div out of the .start box */
+  box-sizing: border-box;
+}
+
+#nameInput,
+#imageInput {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  /* This prevents the inputs themselves from leaking out of #inputs */
+  box-sizing: border-box;
+}
+
+/* Optional: Make the text input stand out a bit more */
+#nameInput {
+  font-family: "Inter", sans-serif;
+  outline-color: #4f46e5;
+}
+
+
+#enter {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#reply1 p,
+#reply2 p,
+#reply3 p {
+  cursor: pointer;
+}
+
+#button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(79, 70, 229, 0.3);
+}
+
+.Rubix {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.maine,
+#relay1,
+#relay2,
+#relay3 {
+  display: flex;
+  gap: 20px;
+  width: 600px;
+  background-color: hsl(223, 19%, 93%);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.votes {
+  background-color: hsl(228, 33%, 97%);
+  width: 10px;
+  /* Note: You might want to increase this to ~35px if it looks too thin! */
+  padding: 15px;
+  border-radius: 8px;
+
+  /* THIS PREVENTS THE STRETCHING */
+  align-self: flex-start;
+
+  /* Keeps the +/- and number stacked vertically */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.picture {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.picture>img {
+  width: 30px;
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.ara {
+  color: hsl(214, 20%, 32%);
+}
+
+#reply1,
+#reply2,
+#reply3 {
+  display: flex;
+  gap: 5px;
+  color: #4e49bb;
+  font-weight: 600;
+  margin-left: 200px;
+}
+
+/* Add this to index.css to make sure the user avatar is visible */
+#replyImage1,
+#replyImage2,
+#replyImage3,
+#replyImag2,
+#replyImag3,
+#mainInputImage {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
+#replies1,
+#replies2,
+#replies3 {
+  margin-top: 20px;
+  display: flex;
+  gap: 50%;
+}
+
+#replies1>textarea,
+#replies2>textarea,
+#replies3>textarea {
+  width: 450px;
+  height: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+}
+
+#replies1 button,
+#replies2 button,
+#replies3 button,
+#mainSendBtn {
+  margin-top: 10px;
+  width: 70px;
+  padding: 12px;
+
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#relay1,
+#relay2,
+#relay3 {
+  margin-left: 40px;
+  padding-bottom: 0px;
+  margin-bottom: 20px;
+  width: 560px;
+}
+
+.together {
+  position: relative;
+  left: 20px;
+  bottom: 10px;
+}
+
+#replyName,
+#replyName2,
+#replyName3 {
+  font-weight: 600;
+}
+
+#replyContent1,
+#replyContent2,
+#replyContent3 {
+  color: hsl(214, 20%, 32%);
+}
+
+.you {
+  background-color: #4f46e5;
+  color: white;
+  width: 27px;
+  height: 20px;
+  padding: 3px;
+}
+
+#editBtn,
+#editBtn2,
+#editBtn3,
+#mainEditBtn {
+  all: unset;
+  color: blue;
+}
+
+#deleteBtn,
+#deleteBtn2,
+#deleteBtn3,
+#mainDeleteBtn {
+  all: unset;
+  color: red;
+}
+
+.edit {
+  margin-left: 100px;
+}
+
+/* Fix for the hidden reply input containers */
+#replies1,
+#replies2,
+#replies3 {
+  display: none;
+  /* Keep hidden by default */
+  flex-wrap: wrap;
+  /* Allows button to wrap if there's no space */
+  align-items: flex-start;
+  height: auto;
+  /* Ensure it grows with the textarea */
+  min-height: 150px;
+}
+
+#replies1 textarea,
+#replies2 textarea,
+#replies3 textarea,
+#mainTextarea {
+  flex-grow: 1;
+  /* Makes textarea take up available space */
+  min-width: 200px;
+  /* Prevents it from disappearing */
+  margin: 0 15px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  /* Allows user to pull it down if needed */
+}
+
+/* Ensure the 'Relay' (posted comment) also shows up correctly */
+#relay1,
+#relay2,
+#relay3 {
+  display: none;
+  padding-bottom: 20px;
+}
+
+/* --- RESPONSIVENESS PATCH --- */
+
+@media (max-width: 768px) {
+
+  /* 1. Make the main containers flexible */
+  .maine,
+  #relay1,
+  #relay2,
+  #relay3,
+  #mainCommentContainer,
+  #mainRelayContainer {
+    width: 90% !important;
+    /* Take up 90% of screen width */
+    max-width: 400px;
+    flex-direction: column-reverse;
+    /* Put votes/icons at the bottom */
+    gap: 15px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 20px;
+  }
+
+  /* 2. Fix the Textareas */
+  #replies1>textarea,
+  #replies2>textarea,
+  #replies3>textarea,
+  #mainTextarea {
+    width: 100% !important;
+    margin: 10px 0 !important;
+    box-sizing: border-box;
+  }
+
+  /* 3. Adjust the Voting bar for mobile */
+  .votes {
+    flex-direction: row !important;
+    /* Stack buttons side-by-side */
+    width: auto !important;
+    height: auto;
+    align-self: flex-start;
+    padding: 8px 12px;
+  }
+
+  /* 4. Fix the "Reply" and "Edit" button positions */
+  #reply1,
+  #reply2,
+  #reply3 {
+    margin-left: 0 !important;
+    /* Remove the 200px push */
+    justify-content: flex-end;
+  }
+
+  .edit,
+  .delete {
+    margin-left: 10px !important;
+    /* Bring icons closer */
+  }
+
+  /* 5. Together div fix */
+  .together {
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 100%;
+  }
+
+  /* 6. Fix the header area (Avatar/Name/Time) */
+  .picture {
+    flex-wrap: wrap;
+    /* Allows name/time to wrap if screen is tiny */
+  }
+}
+
+/* Extra fix for very small phones */
+@media (max-width: 480px) {
+  .start {
+    padding: 20px;
+  }
+
+  .start h1 {
+    font-size: 22px;
+  }
+}
