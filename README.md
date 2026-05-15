@@ -1,4 +1,6 @@
-Interactive Comment Section
+**Interactive Comment Section**
+
+
 A dynamic web application that simulates a real-world social media comment thread.
 
 🚀 Features
