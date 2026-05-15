@@ -32,19 +32,54 @@ startBtn.addEventListener('click', () => {
 
 // 3. IMAGE & NAME SYNC
 function updateUserUI() {
-  // Update all names
   document.querySelectorAll('[id^="replyName"]').forEach(el => {
     el.innerText = userData.name;
   });
 
-  // Update ALL images that start with "replyImag" 
-  // This catches replyImage1, replyImag2, etc.
-  document.querySelectorAll('img').forEach(img => {
-    if (img.id.includes('replyImag')) {
+  document
+    .querySelectorAll('[id^="replyInputImage"], [id^="replyRelayImage"], #mainInputImage')
+    .forEach(img => {
       img.src = userData.image;
-    }
+      img.style.display = 'block';
   });
 }
+
+function setupVoteButtons(voteBlock) {
+  const plus = voteBlock.querySelector('img[class*="lus"]');
+  const minus = voteBlock.querySelector('img[class*="inus"]');
+  const display = voteBlock.querySelector('div[class*="isplay"]');
+  let liked = false;
+
+  if (plus && display) {
+    plus.style.cursor = "pointer";
+    plus.onclick = (e) => {
+      e.stopPropagation();
+      const currentValue = parseInt(display.innerText);
+
+      if (liked) {
+        display.innerText = currentValue - 1;
+        liked = false;
+      } else {
+        display.innerText = currentValue + 1;
+        liked = true;
+      }
+    };
+  }
+
+  if (minus && display) {
+    minus.style.cursor = "pointer";
+    minus.onclick = (e) => {
+      e.stopPropagation();
+      const currentValue = parseInt(display.innerText);
+
+      if (currentValue > 0) {
+        display.innerText = currentValue - 1;
+        liked = false;
+      }
+    };
+  }
+}
+
 
 // 4. THE MAIN LOGIC ENGINE
 function setupAllLogic() {
@@ -77,6 +112,7 @@ function setupAllLogic() {
           contentP.innerText = textArea.value;
           relayDiv.style.display = 'flex';
           inputArea.style.display = 'none';
+          textArea.value = "";
         }
       };
     }
@@ -106,34 +142,14 @@ function setupAllLogic() {
 
   // 5. VOTING (INSIDE setupAllLogic to ensure elements are ready)
   document.querySelectorAll('.votes').forEach(voteBlock => {
-    const plus = voteBlock.querySelector('img[class*="lus"]'); // Matches 'plus', 'replyPlus1'
-    const minus = voteBlock.querySelector('img[class*="inus"]'); // Matches 'minus', 'replyMinus1'
-    const display = voteBlock.querySelector('div[class*="isplay"]'); // Matches 'display', 'replyDisplay1'
-
-    if (plus && display) {
-      plus.style.cursor = "pointer";
-      plus.onclick = (e) => {
-        e.stopPropagation(); // Prevents click bubbling
-        display.innerText = parseInt(display.innerText) + 1;
-      };
-    }
-
-    if (minus && display) {
-      minus.style.cursor = "pointer";
-      minus.onclick = (e) => {
-        e.stopPropagation();
-        let val = parseInt(display.innerText);
-        if (val > 0) display.innerText = val - 1;
-      };
-    }
+    setupVoteButtons(voteBlock);
   });
 }
 
 // 1. SELECTORS
 const mainSendBtn = document.getElementById('mainSendBtn');
 const mainInput = document.getElementById('mainTextarea');
-const mainRelay = document.getElementById('mainRelayContainer');
-const mainDisplay = document.getElementById('mainRelayText');
+const mainInputContainer = document.getElementById('mainInputContainer');
 
 // 2. SEND LOGIC
 if (mainSendBtn) {
@@ -141,57 +157,71 @@ if (mainSendBtn) {
     const textValue = mainInput.value.trim();
 
     if (textValue !== "") {
-      // Put the typed text into the display paragraph
-      mainDisplay.innerText = textValue;
-      // Show the finished comment and hide the input box
-      mainRelay.style.display = 'flex';
-      document.getElementById('mainInputContainer').style.display = 'none';
+      createMainComment(textValue);
+      mainInput.value = "";
     } else {
       alert("Abeg, write something before you send!");
     }
   };
 }
 
-// 3. EDIT/UPDATE LOGIC
-const mainEditBtn = document.getElementById('mainEditBtn');
-if (mainEditBtn) {
-  mainEditBtn.onclick = () => {
-    if (mainEditBtn.innerText === "Edit") {
-      const currentText = mainDisplay.innerText;
-      // Turn paragraph into a textarea
-      mainDisplay.innerHTML = `<textarea class="edit-box" style="width:90%; height:60px;">${currentText}</textarea>`;
-      mainEditBtn.innerText = "Update";
+function createMainComment(textValue) {
+  const commentDiv = document.createElement('div');
+  commentDiv.className = 'maine';
+
+  commentDiv.innerHTML = `
+    <div class="votes">
+      <img class="plus" src="./images/icon-plus.svg" alt="">
+      <div class="display">0</div>
+      <img class="minus" src="./images/icon-minus.svg" alt="">
+    </div>
+    <div class="together">
+      <div class="picture">
+        <img src="${userData.image}" alt="">
+        <p class="name mainCommentName"></p>
+        <div class="you">you</div>
+        <p class="ara">Just now</p>
+        <div class="edit">
+          <img src="./images/icon-edit.svg" alt="">
+          <button class="mainEditBtn">Edit</button>
+        </div>
+        <div class="delete">
+          <img src="./images/icon-delete.svg" alt="">
+          <button class="mainDeleteBtn">Delete</button>
+        </div>
+      </div>
+      <p class="mainRelayText"></p>
+    </div>
+  `;
+
+  mainContent.insertBefore(commentDiv, mainInputContainer);
+
+  const editBtn = commentDiv.querySelector('.mainEditBtn');
+  const deleteBtn = commentDiv.querySelector('.mainDeleteBtn');
+  const commentText = commentDiv.querySelector('.mainRelayText');
+  const commentName = commentDiv.querySelector('.mainCommentName');
+
+  commentName.innerText = userData.name;
+  commentText.innerText = textValue;
+
+  setupVoteButtons(commentDiv.querySelector('.votes'));
+
+  editBtn.onclick = () => {
+    if (editBtn.innerText === "Edit") {
+      const currentText = commentText.innerText;
+      commentText.innerHTML = `<textarea class="edit-box" style="width:90%; height:60px;">${currentText}</textarea>`;
+      editBtn.innerText = "Update";
     } else {
-      // Save new text and turn back into paragraph
-      const newText = mainDisplay.querySelector('textarea').value;
-      mainDisplay.innerText = newText;
-      mainEditBtn.innerText = "Edit";
+      const newText = commentText.querySelector('textarea').value;
+      commentText.innerText = newText;
+      editBtn.innerText = "Edit";
     }
   };
-}
 
-// 4. DELETE LOGIC
-const mainDeleteBtn = document.getElementById('mainDeleteBtn');
-if (mainDeleteBtn) {
-  mainDeleteBtn.onclick = () => {
+  deleteBtn.onclick = () => {
     if (confirm("Are you sure you want to delete this comment?")) {
-      mainRelay.style.display = 'none';
-      // Bring back the empty input box so they can write a new one
-      document.getElementById('mainInputContainer').style.display = 'flex';
-      mainInput.value = "";
+      commentDiv.remove();
     }
   };
 }
 
-function updateUserUI() {
-  // Update your name in the new section
-  const mainName = document.getElementById('mainRelayUsername');
-  if (mainName) mainName.innerText = userData.name;
-
-  // Update your images in the new section
-  const img1 = document.getElementById('mainInputImage');
-  const img2 = document.getElementById('mainRelayImage');
-
-  if (img1) img1.src = userData.image;
-  if (img2) img2.src = userData.image;
-}

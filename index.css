@@ -112,7 +112,7 @@
   transition: 0.3s ease;
 }
 
-button:hover {
+#button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(79, 70, 229, 0.3);
 }
@@ -187,11 +187,12 @@ button:hover {
 }
 
 /* Add this to index.css to make sure the user avatar is visible */
-#replyImage1,
-#replyImage2,
-#replyImage3,
-#replyImag2,
-#replyImag3,
+#replyInputImage1,
+#replyInputImage2,
+#replyInputImage3,
+#replyRelayImage1,
+#replyRelayImage2,
+#replyRelayImage3,
 #mainInputImage {
   width: 40px;
   height: 40px;
@@ -278,7 +279,7 @@ button:hover {
 #editBtn,
 #editBtn2,
 #editBtn3,
-#mainEditBtn {
+.mainEditBtn {
   all: unset;
   color: blue;
 }
@@ -286,7 +287,7 @@ button:hover {
 #deleteBtn,
 #deleteBtn2,
 #deleteBtn3,
-#mainDeleteBtn {
+.mainDeleteBtn {
   all: unset;
   color: red;
 }
@@ -338,12 +339,11 @@ button:hover {
 @media (max-width: 768px) {
 
   /* 1. Make the main containers flexible */
-  .maine,
-  #relay1,
-  #relay2,
-  #relay3,
-  #mainCommentContainer,
-  #mainRelayContainer {
+    .maine,
+    #relay1,
+    #relay2,
+    #relay3,
+    #mainCommentContainer {
     width: 90% !important;
     /* Take up 90% of screen width */
     max-width: 400px;
